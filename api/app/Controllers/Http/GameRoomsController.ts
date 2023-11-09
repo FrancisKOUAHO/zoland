@@ -1,13 +1,12 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import GameRoom from "App/Models/GameRoom";
 
 export default class GameRoomsController {
-  public async index({response}: HttpContextContract) {
-    const gameRooms = await GameRoom.all()
-    return response.json(gameRooms)
-  }
+  public async index({}: HttpContextContract) {}
 
-  public async create({}: HttpContextContract) {}
+  public async create({ sse }: HttpContextContract) {
+    console.log(sse.id)
+    sse.send({ message: `GameRooms!🚀 ${sse.id as String}` })
+  }
 
   public async store({}: HttpContextContract) {}
 
