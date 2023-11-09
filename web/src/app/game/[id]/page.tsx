@@ -11,6 +11,7 @@ const Page = ({params}: { params: { id: string } }) => {
             <Link href={`/room/${params.id}`}>
                 Lancer la partie
             </Link>
+
         </div>
     )
 }
