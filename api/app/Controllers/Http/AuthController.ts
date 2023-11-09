@@ -14,18 +14,24 @@ export default class AuthController {
   public async login({ auth, request, response }: HttpContextContract) {
     const { email, password } = request.all()
 
-    await auth.attempt(email, password)
+    const token = await auth.use('web').attempt(email, password)
 
-    return response.noContent()
+    if (!token) {
+      return response.badRequest()
+    }
+
+    return response.ok(token.toJSON())
   }
 
-  public async register({ auth, request, response }: HttpContextContract) {
+  public async register({ request, response }: HttpContextContract) {
 
     const payload = await request.validate(CreateUserValidator)
 
     const user: User = await User.create(payload)
 
-    await auth.login(user)
+    if (!user) {
+      return response.badRequest()
+    }
 
     return response.created()
   }
