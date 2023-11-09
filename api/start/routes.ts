@@ -25,8 +25,6 @@ Route.group(() => {
   }).prefix('games')
 
   Route.group(() => {
-    Route.get('sse-create-room', 'GameRoomsController.create')
-  })
-    .prefix('room')
-    .middleware(['sse'])
+    Route.get('create-room', 'GameRoomsController.create')
+  }).prefix('room')
 }).prefix('api/v1')

@@ -3,18 +3,13 @@ import CreateUserValidator from 'App/Validators/CreateUserValidator'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 export default class AuthController {
-  public me({ auth }: HttpContextContract) {
-    return auth.user
-  }
-
-  public async check({ auth, response }: HttpContextContract) {
-    return response.ok({ authenticated: auth.isAuthenticated })
-  }
 
   public async login({ auth, request, response }: HttpContextContract) {
     const { email, password } = request.all()
 
-    const token = await auth.use('web').attempt(email, password)
+    const token = await auth.use('api').attempt(email, password, {
+      expiresIn: '3h',
+    })
 
     if (!token) {
       return response.badRequest()
@@ -36,9 +31,16 @@ export default class AuthController {
     return response.created()
   }
 
+  public async check({ auth, response }: HttpContextContract) {
+    return response.ok({ authenticated: auth.isAuthenticated })
+  }
+
+  public me({ auth }: HttpContextContract) {
+    return auth.user
+  }
+
   public async logout({ auth, response }: HttpContextContract) {
     await auth.logout()
-
     return response.noContent()
   }
 }
