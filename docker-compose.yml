@@ -1,9 +1,5 @@
 version: '3.9'
 
-networks:
-  zoland:
-    driver: bridge
-
 services:
   api:
     build:
@@ -62,3 +58,7 @@ services:
 volumes:
   api-psql-data:
   redis-data:
+
+networks:
+  zoland:
+    driver: bridge

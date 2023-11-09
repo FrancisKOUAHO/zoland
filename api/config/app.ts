@@ -102,7 +102,7 @@ export const http: ServerConfig = {
   |--------------------------------------------------------------------------
   */
   cookie: {
-    domain: Env.get('SESSION_DOMAIN', undefined),
+    domain: '',
     path: '/',
     maxAge: '2h',
     httpOnly: true,

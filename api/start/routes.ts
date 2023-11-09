@@ -24,9 +24,7 @@ Route.group(() => {
     Route.delete(':id', 'GamesController.destroy')
   }).prefix('games')
 
-  Route.group(() => {
-    Route.get('sse-create-room', 'GameRoomsController.create')
-  })
-    .prefix('room')
-    .middleware(['sse'])
+  Route.get('sse', ({ sse }) => {
+    sse.send({ message: 'To the moon!🚀' })
+  }).middleware(['sse'])
 }).prefix('api/v1')

@@ -1,9 +1,9 @@
-import {SSEConfig} from "@ioc:isimisi/SSE";
+import { SSEConfig } from '@ioc:isimisi/SSE'
 
 export const sseConfig: SSEConfig = {
   pad_for_ie: false, // if the HTTP request is from an IE 8/9 browser - set to 'true'
   no_ids: false, // if you need id: key/value (from the cuid lib) as part of the text-stream response - set to 'true'
-  prefered_event_name: "message", // if you need event: key/value (here set to 'message')  as part of the text-stream resposne - set here to whatever you like
+  prefered_event_name: 'message', // if you need event: key/value (here set to 'message')  as part of the text-stream resposne - set here to whatever you like
   redis: false, // save clients to redis
   redisKey: null, // set to a string if you want to use another name for the key where clients are saved
   cors: {
@@ -38,7 +38,7 @@ export const sseConfig: SSEConfig = {
     |
     | Following is the list of default methods. Feel free to add more.
     */
-    methods: ["GET", "HEAD", "POST", "PUT", "DELETE", "PATCH"],
+    methods: ['GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'PATCH'],
     /*
     |--------------------------------------------------------------------------
     | Expose Headers
@@ -60,12 +60,12 @@ export const sseConfig: SSEConfig = {
     |
     */
     exposeHeaders: [
-      "cache-control",
-      "content-language",
-      "content-type",
-      "expires",
-      "last-modified",
-      "pragma",
+      'cache-control',
+      'content-language',
+      'content-type',
+      'expires',
+      'last-modified',
+      'pragma',
     ],
 
     /*
@@ -92,4 +92,4 @@ export const sseConfig: SSEConfig = {
     */
     maxAge: 90,
   },
-};
+}

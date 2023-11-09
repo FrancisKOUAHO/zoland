@@ -1,10 +1,10 @@
-import { ApplicationContract } from '@ioc:Adonis/Core/Application'
+import type { ApplicationContract } from '@ioc:Adonis/Core/Application'
 
 export default class AppProvider {
   constructor(protected app: ApplicationContract) {}
 
   public register() {
-    // Page your own bindings
+    // Register your own bindings
   }
 
   public async boot() {
